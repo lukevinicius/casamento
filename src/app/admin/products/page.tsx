@@ -13,23 +13,28 @@ export default async function Products() {
         <CreateButtom />
       </div>
       <div className="grid gap-2 rounded-xl bg-zinc-700 p-4 md:grid-cols-4">
-        {products.map((product) => (
-          <div key={product.id} className="mx-auto">
-            <div className="max-w-fit space-y-2 bg-zinc-200 p-2">
-              <img src={product.photoUrl} alt={product.name} className="w-64" />
-              <div className="flex items-center justify-between">
-                <p className="py-2 font-semibold">{product.name}</p>
-                <div className="space-x-2">
-                  <EditButtom productId={product.id} />
-                  <DeleteButtom
-                    productId={product.id}
-                    photoUrl={product.photoUrl}
-                  />
+        {products &&
+          products.map((product) => (
+            <div key={product.id} className="mx-auto">
+              <div className="max-w-fit space-y-2 bg-zinc-200 p-2">
+                <img
+                  src={product.photoUrl}
+                  alt={product.name}
+                  className="w-64"
+                />
+                <div className="flex items-center justify-between">
+                  <p className="py-2 font-semibold">{product.name}</p>
+                  <div className="space-x-2">
+                    <EditButtom productId={product.id} />
+                    <DeleteButtom
+                      productId={product.id}
+                      photoUrl={product.photoUrl}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   )
