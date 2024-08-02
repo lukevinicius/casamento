@@ -80,6 +80,12 @@ export function CreateProductForm() {
               'Criar'
             )}
           </Button>
+          <Button
+            onClick={() => router.push('/admin/products')}
+            className="bg-yellow-600 text-zinc-100 hover:bg-yellow-700"
+          >
+            Voltar
+          </Button>
         </form>
       </FormProvider>
     </div>
