@@ -6,7 +6,7 @@ export default async function UpdateProduct({
 }: {
   params: { productId: string }
 }) {
-  const { product } = await getProductId({ productId: params.productId })
+  const { product, error } = await getProductId({ productId: params.productId })
 
   return (
     <div className="space-y-4">
@@ -16,7 +16,7 @@ export default async function UpdateProduct({
         </p>
       </div>
 
-      {product && product.id && <UpdateProductForm product={product} />}
+      {product && !error && <UpdateProductForm product={product} />}
     </div>
   )
 }
