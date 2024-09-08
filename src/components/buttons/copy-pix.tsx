@@ -3,7 +3,11 @@
 import { Button } from '@/components/ui/button'
 import { useToast } from '@/hooks/use-toast'
 
-export function CopyPIX() {
+interface CopyPIXProps {
+  title?: string
+}
+
+export function CopyPIX({ title }: CopyPIXProps) {
   const { toast } = useToast()
 
   function handleCopyPIX() {
@@ -17,10 +21,10 @@ export function CopyPIX() {
 
   return (
     <Button
-      className="rounded-lg border-emerald-600 bg-zinc-50 p-2 text-emerald-700 hover:bg-zinc-200"
+      className="w-full rounded-lg border-emerald-600 bg-zinc-50 p-2 text-emerald-700 hover:bg-zinc-200"
       onClick={handleCopyPIX}
     >
-      Copiar chave PIX
+      {title || 'Copiar chave PIX'}
     </Button>
   )
 }
