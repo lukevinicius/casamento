@@ -4,14 +4,18 @@ export async function Products() {
   const products = await fetchProducts()
 
   return (
-    <div className="mx-auto grid grid-cols-2 gap-2 md:grid-cols-4">
+    <div className="grid gap-2 md:grid-cols-2">
       {products &&
         products.map((product) => (
-          <div key={product.id} className="mx-auto">
-            <div className="max-w-fit space-y-2 bg-zinc-200 p-2">
-              <img src={product.photoUrl} alt={product.name} className="w-64" />
+          <div key={product.id} className="w-full bg-zinc-200">
+            <div className="mx-auto w-full max-w-fit space-y-2 p-2">
+              <img
+                src={product.photoUrl}
+                alt={product.name}
+                className="mx-auto h-48 w-full"
+              />
               <div className="flex items-center justify-between">
-                <p className="py-2 font-semibold text-emerald-700">
+                <p className="py-2 text-center font-semibold text-emerald-700">
                   {product.name}
                 </p>
               </div>
