@@ -11,7 +11,9 @@ export async function Products() {
             <div className="max-w-fit space-y-2 bg-zinc-200 p-2">
               <img src={product.photoUrl} alt={product.name} className="w-64" />
               <div className="flex items-center justify-between">
-                <p className="py-2 font-semibold">{product.name}</p>
+                <p className="py-2 font-semibold text-emerald-700">
+                  {product.name}
+                </p>
               </div>
             </div>
           </div>

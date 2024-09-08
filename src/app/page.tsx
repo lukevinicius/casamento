@@ -20,8 +20,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="mx-auto h-screen md:max-w-96">
-        <div className="mx-4 flex h-full justify-center bg-emerald-700 px-4 text-center text-zinc-50">
+      <div className="mx-auto h-full md:max-w-96">
+        <div className="mx-4 flex h-full justify-center bg-emerald-700 px-4 pb-4 text-center text-zinc-50">
           <div className="space-y-6">
             <ConfirmButton />
             <p>
@@ -33,7 +33,11 @@ export default function Home() {
               gratidão! Mas o que mais desejamos é sua presença neste momento
               tão especial.
             </p>
-            <p className="font-semibold">CHAVE PIX: (88) 98813-9063</p>
+            <div>
+              <p className="font-semibold">CHAVE PIX: (88) 98813-9063</p>
+              <p>Banco: Nubank</p>
+              <p>Nome: Lucas vinicius alencar alves</p>
+            </div>
             <CopyPIX />
             <p>
               Para aqueles que desejarem nos presentear, criamos uma lista com
