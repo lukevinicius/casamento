@@ -21,7 +21,7 @@ export async function Products() {
               </p>
               <div className="space-y-2">
                 <HelpDialog product={product} />
-                {!product.userId && <CopyPIX />}
+                {!product.userId && <CopyPIX title="Vou ajudar com um PIX" />}
               </div>
             </div>
           </div>
