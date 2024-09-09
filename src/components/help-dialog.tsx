@@ -39,7 +39,7 @@ export function HelpDialog({ product }: HelpDialogProps) {
           disabled={product.userId !== null}
           className="w-full border-emerald-700 bg-emerald-500 text-zinc-50 hover:bg-emerald-600"
         >
-          {product.userId ? 'Conquistado!' : 'Vou comprar!'}
+          {product.userId ? 'Foi presenteado!' : 'Presentear!'}
         </Button>
       </DialogTrigger>
       <DialogContent className="bg-emerald-700 text-zinc-50 sm:max-w-[425px]">
