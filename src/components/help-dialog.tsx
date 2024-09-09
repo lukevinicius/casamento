@@ -70,7 +70,7 @@ export function HelpDialog({ product }: HelpDialogProps) {
             className="w-full border-emerald-700 bg-emerald-500 font-semibold text-zinc-50 hover:bg-emerald-600"
             type="submit"
           >
-            Vou comprar!
+            Presentear!
           </Button>
         </form>
       </DialogContent>
