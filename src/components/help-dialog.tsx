@@ -9,6 +9,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
+import { useToast } from '@/hooks/use-toast'
+import { Loader2 } from 'lucide-react'
+import { useTransition } from 'react'
 
 interface HelpDialogProps {
   product: {
@@ -19,16 +22,33 @@ interface HelpDialogProps {
 }
 
 export function HelpDialog({ product }: HelpDialogProps) {
-  async function handleSelectProduct(e: React.FormEvent<HTMLFormElement>) {
+  const [isPending, startTransition] = useTransition()
+  const { toast } = useToast()
+
+  function handleSelectProduct(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const { name, email, phone } = e.currentTarget.elements as any
+    startTransition(async () => {
+      const { error } = await selectProduct({
+        name: name.value,
+        email: email.value,
+        phone: phone.value,
+        productId: product.id,
+      })
 
-    await selectProduct({
-      name: name.value,
-      email: email.value,
-      phone: phone.value,
-      productId: product.id,
+      if (error) {
+        toast({
+          title: 'Erro!',
+          description: 'Ocorreu um erro ao presentear!',
+          variant: 'destructive',
+        })
+      } else {
+        toast({
+          title: 'Sucesso!',
+          description: 'Obrigado por nos presentear!',
+        })
+      }
     })
   }
 
@@ -70,7 +90,11 @@ export function HelpDialog({ product }: HelpDialogProps) {
             className="w-full border-emerald-700 bg-emerald-500 font-semibold text-zinc-50 hover:bg-emerald-600"
             type="submit"
           >
-            Presentear!
+            {isPending ? (
+              <Loader2 className="mx-auto h-6 w-6 animate-spin" />
+            ) : (
+              'Presentear!'
+            )}
           </Button>
         </form>
       </DialogContent>

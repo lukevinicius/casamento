@@ -16,22 +16,30 @@ export async function selectProduct({
   phone,
   productId,
 }: IRequest) {
-  const user = await prisma.user.upsert({
-    where: { email },
-    create: {
-      name,
-      email,
-      phone,
-    },
-    update: {},
-  })
+  try {
+    const user = await prisma.user.upsert({
+      where: { email },
+      create: {
+        name,
+        email,
+        phone,
+      },
+      update: {},
+    })
 
-  await prisma.product.update({
-    where: { id: productId },
-    data: {
-      userId: user.id,
-    },
-  })
+    await prisma.product.update({
+      where: { id: productId },
+      data: {
+        userId: user.id,
+      },
+    })
 
-  revalidatePath('/')
+    revalidatePath('/')
+  } catch (error) {
+    return {
+      error: 'Ocorreu um erro',
+    }
+  }
+
+  return {}
 }
