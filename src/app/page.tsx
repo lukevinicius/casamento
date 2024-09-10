@@ -1,10 +1,14 @@
 import { Products } from '@/components/home/products'
 import { CopyPIX } from '@/components/buttons/copy-pix'
+import Image from 'next/image'
+
+import convite from '@/assets/convite.png'
 
 export default function Home() {
   return (
-    <div className="h-full bg-white">
+    <div className="h-full bg-[#ededed]">
       <div className="mx-auto h-full md:max-w-96">
+        <Image src={convite} className="mx-auto h-full w-full" alt="Convite" />
         <div className="mx-4 mt-4 flex h-full justify-center rounded-t-xl bg-emerald-700 p-4 pb-4 text-center text-zinc-50">
           <div className="space-y-6">
             <p>
