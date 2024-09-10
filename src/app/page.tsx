@@ -6,7 +6,7 @@ import convite from '@/assets/convite.png'
 
 export default function Home() {
   return (
-    <div className="h-full bg-[#ededed]">
+    <div className="h-full bg-[#ededed] dark:bg-[#ededed]">
       <div className="mx-auto h-full md:max-w-96">
         <Image src={convite} className="mx-auto h-full w-full" alt="Convite" />
         <div className="mx-4 mt-4 flex h-full justify-center rounded-t-xl bg-emerald-700 p-4 pb-4 text-center text-zinc-50">
