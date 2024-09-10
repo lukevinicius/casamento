@@ -9,3 +9,5 @@ export async function fetchProducts() {
 
   return products
 }
+
+export const revalidate = 0
