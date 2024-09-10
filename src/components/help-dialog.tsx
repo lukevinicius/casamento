@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog'
 import { useToast } from '@/hooks/use-toast'
 import { Loader2 } from 'lucide-react'
-import { useTransition } from 'react'
+import { useState, useTransition } from 'react'
 
 interface HelpDialogProps {
   product: {
@@ -23,6 +23,7 @@ interface HelpDialogProps {
 
 export function HelpDialog({ product }: HelpDialogProps) {
   const [isPending, startTransition] = useTransition()
+  const [isDialogOpen, setDialogOpen] = useState(false)
   const { toast } = useToast()
 
   function handleSelectProduct(e: React.FormEvent<HTMLFormElement>) {
@@ -48,16 +49,19 @@ export function HelpDialog({ product }: HelpDialogProps) {
           title: 'Sucesso!',
           description: 'Obrigado por nos presentear!',
         })
+
+        setDialogOpen(false)
       }
     })
   }
 
   return (
-    <Dialog>
+    <Dialog open={isDialogOpen}>
       <DialogTrigger asChild>
         <Button
           disabled={product.userId !== null}
           className="w-full border-emerald-700 bg-emerald-500 text-zinc-50 hover:bg-emerald-600"
+          onClick={() => setDialogOpen(true)}
         >
           {product.userId ? 'Foi presenteado!' : 'Presentear!'}
         </Button>
