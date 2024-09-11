@@ -1,3 +1,12 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+
 import { fetchProducts } from '@/actions/fetch-products'
 import { DeleteButtom } from './delete-buttom'
 import { CreateButtom } from './create-buttom'
@@ -12,39 +21,48 @@ export default async function Products() {
         <p className="text-2xl font-semibold text-zinc-100">Produtos</p>
         <CreateButtom />
       </div>
-      <div className="grid gap-2 rounded-xl bg-zinc-700 p-4 md:grid-cols-4">
-        {products &&
-          products.map((product) => (
-            <div key={product.id} className="mx-auto">
-              <div className="max-w-fit space-y-2 bg-zinc-200 p-2">
-                <img
-                  src={product.photoUrl}
-                  alt={product.name}
-                  className="w-64"
-                />
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="py-2 font-semibold">{product.name}</p>
-                    <p className="py-2 font-semibold">
-                      Pessoa que vai dar este presente: {product.userName}
-                    </p>
-                    <p>
-                      Contato da pessoa: {product.userEmail} -{' '}
-                      {product.userPhone}
-                    </p>
-                  </div>
-                  <div className="space-x-2">
-                    <EditButtom productId={product.id} />
-                    <DeleteButtom
-                      productId={product.id}
-                      photoUrl={product.photoUrl}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
+      <Table>
+        <TableHeader>
+          <TableRow className="bg-zinc-900">
+            <TableHead className="text-center text-zinc-50">Imagem</TableHead>
+            <TableHead className="text-center text-zinc-50">Produto</TableHead>
+            <TableHead className="text-center text-zinc-50">
+              Quem dará
+            </TableHead>
+            <TableHead className="text-center text-zinc-50">Email</TableHead>
+            <TableHead className="text-center text-zinc-50">Telefone</TableHead>
+            <TableHead className="text-center text-zinc-50">Ações</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {products &&
+            products.map((product) => (
+              <TableRow
+                key={product.id}
+                className="bg-zinc-700 text-center text-zinc-50"
+              >
+                <TableCell className="font-medium">
+                  <img
+                    src={product.photoUrl}
+                    alt={product.name}
+                    className="w-32"
+                  />
+                </TableCell>
+                <TableCell>{product.name}</TableCell>
+                <TableCell>{product.userName}</TableCell>
+                <TableCell>{product.userEmail}</TableCell>
+                <TableCell>{product.userPhone}</TableCell>
+                <TableCell className="space-x-2">
+                  <EditButtom productId={product.id} />
+                  <DeleteButtom
+                    productId={product.id}
+                    photoUrl={product.photoUrl}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+        </TableBody>
+      </Table>
     </div>
   )
 }
