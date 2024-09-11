@@ -28,6 +28,10 @@ export default async function Products() {
                     <p className="py-2 font-semibold">
                       Pessoa que vai dar este presente: {product.userName}
                     </p>
+                    <p>
+                      Contato da pessoa: {product.userEmail} -{' '}
+                      {product.userPhone}
+                    </p>
                   </div>
                   <div className="space-x-2">
                     <EditButtom productId={product.id} />

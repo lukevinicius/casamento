@@ -13,6 +13,8 @@ export async function fetchProducts() {
         select: {
           id: true,
           name: true,
+          email: true,
+          phone: true,
         },
       },
     },
@@ -24,6 +26,8 @@ export async function fetchProducts() {
     photoUrl: product.photoUrl,
     userId: product.User?.id || null,
     userName: product.User?.name || null,
+    userEmail: product.User?.email || null,
+    userPhone: product.User?.phone || null,
   }))
 }
 
