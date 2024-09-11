@@ -1,3 +1,5 @@
+'use server'
+
 import { prisma } from '@/lib/prisma'
 
 export async function fetchProducts() {
@@ -30,5 +32,3 @@ export async function fetchProducts() {
     userPhone: product.User?.phone || null,
   }))
 }
-
-export const revalidate = 0
