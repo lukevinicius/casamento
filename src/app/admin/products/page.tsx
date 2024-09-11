@@ -24,6 +24,9 @@ export default async function Products() {
                 />
                 <div className="flex items-center justify-between">
                   <p className="py-2 font-semibold">{product.name}</p>
+                  <p className="py-2 font-semibold">
+                    Pessoa que vai dar este presente: {product.userName}
+                  </p>
                   <div className="space-x-2">
                     <EditButtom productId={product.id} />
                     <DeleteButtom
